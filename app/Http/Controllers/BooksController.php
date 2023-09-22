@@ -25,6 +25,9 @@ class BooksController extends Controller
             $books = Book::where('title', 'LIKE', "%$search%")->get();
         }
         
+        if (request('category')){
+            $books = Category::where('name', request('category'))->firstorFail()->books;
+        }
 
         else {
             $books = Book::all();

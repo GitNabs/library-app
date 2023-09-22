@@ -19,8 +19,8 @@
         
     </article>
     {{-- <p style="margin-top: 1em">
-        @foreach ($task->tags as $tag)
-            <a href="/tasks?tag={{ $tag->name }}">{{ $tag->name }}</a>
+        @foreach ($book->categories as $category)
+            <a href="/books?tag={{ $category->name }}">{{ $category->name }}</a>
         @endforeach
     </p> --}}
     <a href="/authors">Back</a>

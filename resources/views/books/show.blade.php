@@ -20,7 +20,7 @@
     </article>
     <p style="margin-top: 1em">
         @foreach ($book->categories as $category)
-            <a href="/tasks?tag={{ $category->name }}">{{ $category->name }}</a>
+            <a href="/books?category={{ $category->name }}">{{ $category->name }}</a>
         @endforeach
     </p>
     <a href="/books">Back</a>
