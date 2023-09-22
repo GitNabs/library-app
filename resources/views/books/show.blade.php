@@ -10,9 +10,10 @@
 <body>
     <article>
         <h1 class="title">
+            
             <p class="body">Book ID: {{ $book->id }}</p>
             <p class="body">Title: {{ $book->title }}</p>
-            <p class="body">Author: {{ $book->author->first_name ." ". $book->author->last_name }}</p>
+            <p class="body">Author: <a href="/authors/{{$book->author_id}}" style="color:black"> {{ $book->author->name }}</a></p>
             <p class="body">Year Published: {{ $book->publication_year }}</p>
             <p class="body">ISBN: {{ $book->isbn }}</p>
         </h1>
@@ -20,7 +21,7 @@
     </article>
     <p style="margin-top: 1em">
         @foreach ($book->categories as $category)
-            <a href="/books?category={{ $category->name }}">{{ $category->name }}</a>
+            <a href="/books?category={{ $category->name }}" style="color:black">{{ $category->name }}</a>
         @endforeach
     </p>
     <a href="/books">Back</a>

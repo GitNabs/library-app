@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Author;
 use Illuminate\Http\Request;
 use App\Http\Requests\Author\StoreRequest;
@@ -62,8 +63,10 @@ class AuthorsController extends Controller
      */
     public function show(Author $author)
     {
+
         return view('authors.show', [
             'author' => $author
+            //'book' => Book::all()
         ]);
     }
 

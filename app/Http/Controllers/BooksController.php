@@ -18,8 +18,7 @@ class BooksController extends Controller
     public function index(Request $req)
     {
         $books = [];
-
-        $search = $req->input('search');;
+        $search = $req->input('search');
 
         if (!empty($search)) {
             $books = Book::where('title', 'LIKE', "%$search%")->get();
@@ -34,7 +33,8 @@ class BooksController extends Controller
         }
 
         return view('books.index', [
-            'books' => $books
+            'books' => $books,
+            
         ]);
     }
 

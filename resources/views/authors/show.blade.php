@@ -15,14 +15,15 @@
             <p class="body">Birthday: {{ $author->birthdate }}</p>
             <p class="body">Nationality: {{ $author->nationality }}</p>
             <p class="body">Biography: {{ $author->biography }}</p>
+            <p class="body">Books:</p>
         </h1>
         
     </article>
-    {{-- <p style="margin-top: 1em">
-        @foreach ($book->categories as $category)
-            <a href="/books?tag={{ $category->name }}">{{ $category->name }}</a>
+    <p style="margin-top: 1em">
+        @foreach ($author->books as $book )
+            <h1><a href="/books/{{ $book->id }}" style="color:black">{{ $book->title }}</a></h1>
         @endforeach
-    </p> --}}
-    <a href="/authors">Back</a>
+    </p>
+    <a href="/authors">Back to Authors</a>
 </body>
 </html>

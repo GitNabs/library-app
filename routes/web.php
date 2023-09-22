@@ -4,6 +4,7 @@ use App\Models\Book;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\AuthorsController;
+use App\Http\Controllers\CategoriesController;
 // dd(request()->url(), request()->method());
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +39,6 @@ Route::get('/authors/{author}', [AuthorsController::class, 'show']);
 Route::get('/authors/{author}/edit', [AuthorsController::class, 'edit']);
 Route::put('/authors/{author}', [AuthorsController::class, 'update']);
 Route::delete('/authors/{author}', [AuthorsController::class, 'destroy']);
+
+// Categories Routes
+Route::get('/categories', [CategoriesController::class, 'index']);
