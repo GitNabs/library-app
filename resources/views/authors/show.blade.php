@@ -15,7 +15,7 @@
             <p class="body">Birthday: {{ $author->birthdate }}</p>
             <p class="body">Nationality: {{ $author->nationality }}</p>
             <p class="body">Biography: {{ $author->biography }}</p>
-            <p class="body">Books:</p>
+            <p class="body">Books written:</p>
         </h1>
         
     </article>

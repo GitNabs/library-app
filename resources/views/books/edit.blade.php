@@ -36,7 +36,6 @@
         <div class="control">
             <select
                 name="author_id"
-                
             >
                 @foreach ($authors as $author)
                     <option {{ $author->id === $book->author_id ? 'selected' : '' }} value="{{ $author->id }}">{{ $author->name }}</option>
@@ -45,6 +44,29 @@
             @error('author')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
+        </div>
+
+        <label for="exampleFormControlInput1" class="form-label">Category</label>
+        <div class="control">
+            <select
+                class="@if($errors->has('category_ids.0')) is-invalid @endif"
+                name="category_ids[]"
+                multiple
+            >
+                @foreach ($categories as $category)
+                    <option
+                        {{ $book->categories->where('id', '=', $category->id)->first() ? 'selected' : '' }}
+                        value="{{ $category->id }}"
+                    >
+                        {{ $category->name }}
+                    </option>
+                @endforeach
+            </select>
+            @if ($errors->has('category_ids.0'))
+                <div class="invalid-feedback">
+                    {{ $errors->first('category_ids.0') }}
+                </div>
+            @endif
         </div>
 
         {{-- Publication --}}
@@ -56,7 +78,7 @@
 
         {{-- ISBN --}}
         <label for="exampleFormControlInput1" class="form-label">ISBN</label>
-        <input class="form-control mb-2 @error('isbn') is-invalid @enderror" type="text" name="isbn" value="{{ $book->isbn }}">
+        <input class="form-control mb-2 @error('isbn') is-invalid @enderror" type="text" name="isbn" value="{{ str($book->isbn)->limit(10) }}">
         @error('isbn')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror

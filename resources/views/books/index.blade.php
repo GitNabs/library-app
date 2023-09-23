@@ -21,7 +21,12 @@
                         @method('DELETE')
                         <button type="submit">Delete</button>
                     </form>
-                    <p class="body">Author: <a href="/authors/{{ $book->author_id }}" style="color:black">{{ $book->author->name}}</a></p>
+                    <p class="body">Author: 
+                        <a href="/authors/{{ $book->author_id }}" style="color:black">
+                            {{ $book->author->name }} 
+                            {{-- select * from `authors` where `authors`.`id` = $book->author_id limit 1 --}}
+                        </a>
+                    </p>
                     <p class="body">Year Published: {{ $book->publication_year }}</p>
                     <p class="body">ISBN Code: {{ $book->isbn }}</p>
                     {{ $book->available ? 'This book is available' : 'This book is unavailable' }}

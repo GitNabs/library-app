@@ -21,7 +21,7 @@ class BookFactory extends Factory
     public function definition(): array
     {
         return [
-            'title'             => $this->faker->title(),
+            'title'             => $this->faker->unique()->title(), // geneates unique title
             'author_id'         => Author::factory()->create(), // gets the id from the author once generated
             'publication_year'  => $this->faker->year(),
             'isbn'              => $this->faker->uuid(), // asdfqe-123.asd1231
