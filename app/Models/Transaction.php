@@ -18,6 +18,16 @@ class Transaction extends Model
 
     public $timestamps = false;
 
+    public static function boot(){ //model events - while creating model slip this process in before saving it in the database
+        parent::boot();
+
+        static::creating(function(Transaction $transaction){
+            $transaction->borrowed_at = now();
+        });
+
+        
+    }
+
     public function user(){
         return $this->belongsTo(User::class);
     }

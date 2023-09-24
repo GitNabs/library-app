@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('book_id')->constrained();
-            $table->timestamp('borrowed_at')->default(now());
+            $table->timestamp('borrowed_at')->default(now()); //same time and date will appear even if you create  new data
             $table->timestamp('returned_at')->nullable();
         });
     }

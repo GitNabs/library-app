@@ -33,7 +33,7 @@ class TransactionsController extends Controller
         //     $transactions=Transaction::all();
         //     // $transactions = Book::with('author')->get();
         // }
-        $transactions = Transaction::all();
+        $transactions = Transaction::with(['book', 'user'])->get();
         return view('transactions.index', [
             'transactions' => $transactions,
         ]);
@@ -63,7 +63,7 @@ class TransactionsController extends Controller
         // $task->user_id=1;
         // $task->save();
 
-        // $book->categories()->attach(request('categories'));
+        //$book->categories()->attach(request('categories'));
         return redirect('/transactions');
     }
 

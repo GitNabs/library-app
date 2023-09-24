@@ -23,20 +23,14 @@
                     </form>
                     <p class="body">Book Borrowed: <a href="books/{{ $transaction->book_id }}" style="color:black">{{ $transaction->book->title }}</a></p>
                     <p class="body">Date Borrowed: {{ $transaction->borrowed_at }}</p>
-                    {{-- {{ $book->available ? 'This book is available' : 'This book is unavailable' }}
-                    @if ($book->available)
-                        <form action="/books/{{ $book->id }}/unavailable" method="post">
-                            @csrf
-                            @method('PUT')
-                            <button type="submit">Mark as unavailable</button>
-                        </form>
+                    {{-- @if($transaction->returned_at === null)
+                    <p class="body">Date Returned: Not returned yet</p>
                     @else
-                    <form action="/books/{{ $book->id }}/available" method="post">
-                        @csrf
-                        @method('PUT')
-                        <button type="submit">Mark as available</button>
-                    </form>
+                    <p class="body">Date Returned: {{ $transaction->returned_at }}</p>
                     @endif --}}
+                    <p class="body">{{ $transaction->returned_at === null ?
+                     "Date Returned: Not returned yet" : "Date Returned:  $transaction->returned_at" }}
+                    </p>
                 </h1>
             </article>
         @endforeach
