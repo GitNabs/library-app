@@ -23,7 +23,7 @@ class Transaction extends Model
 
         static::creating(function(Transaction $transaction){
             $transaction->borrowed_at = now();
-        });
+        }); 
 
         
     }
