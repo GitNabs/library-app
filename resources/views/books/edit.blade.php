@@ -46,6 +46,7 @@
             @enderror
         </div>
 
+        {{-- Categories --}}
         <label for="exampleFormControlInput1" class="form-label">Category</label>
         <div class="control">
             <select

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\AuthorsController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\TransactionsController;
 // dd(request()->url(), request()->method());
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,12 @@ Route::delete('/authors/{author}', [AuthorsController::class, 'destroy']);
 
 // Categories Routes
 Route::get('/categories', [CategoriesController::class, 'index']);
+
+// Transactions Routes
+Route::get('/transactions', [TransactionsController::class, 'index']);
+Route::get('/transactions/create', [TransactionsController::class, 'create']);
+Route::post('/transactions', [TransactionsController::class, 'store']);
+Route::get('/transactions/{transaction}', [TransactionsController::class, 'show']);
+Route::get('/transactions/{transaction}/edit', [TransactionsController::class, 'edit']);
+Route::put('/transactions/{transaction}', [TransactionsController::class, 'update']);
+Route::delete('/transactions/{transaction}', [TransactionsController::class, 'destroy']);

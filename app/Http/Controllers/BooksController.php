@@ -40,12 +40,16 @@ class BooksController extends Controller
     //     ]);
     // }
 
+    // Notification     -> mail or sms
+    // Queues or Jobs   -> run the process in the background in queue
+    // Scheduler        -> every day at 12:00 p.m delete all products inactive
+
     public function index(Request $req)
     {
         // availability
         // nationality
 
-
+        // 
         $books = Book::query()
             ->with(['categories', 'author']) // (['categories'])
             // gets only the books with categories relation who's not empty

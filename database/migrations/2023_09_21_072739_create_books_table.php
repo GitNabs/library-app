@@ -20,9 +20,9 @@ return new class extends Migration
             $table->text('biography')->nullable();
             $table->timestamps(); // Created_at and updated_at timestamps
         });
-        
+
         Schema::create('books', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // id
             $table->string('title')->index();
             $table->foreignId('author_id')->constrained();//unsignedBigInteger
             $table->integer('publication_year');
