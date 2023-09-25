@@ -13,7 +13,6 @@
         <article>
             <h1 class="title">
                 <a href="/books?category={{ $category->name }}">{{ $category->name }}</a>
-                
                 </form>
             </h1>
         </article>

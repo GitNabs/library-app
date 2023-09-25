@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
             'user_id' => ['required', 'integer', 'exists:users,id'],
             'book_id' => ['required', 'integer', 'exists:books,id'],
             'borrowed_at' => ['required', 'date'],
-            'returned_at' => ['required', 'date']
+            'returned_at' => ['date']
         ];
     }
 }

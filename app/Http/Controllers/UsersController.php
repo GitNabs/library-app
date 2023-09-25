@@ -10,12 +10,12 @@ class UsersController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index() 
     {
         $users = [];
-        $users = User::with(['transactions'])->get();
+        $users = User::with(['transactions'])->get(); //used with to prevent N+1
         return view('users.index', [
-            'users' => $users
+            'users' => $users //loads the data into index view
         ]);
     }
 
@@ -38,9 +38,13 @@ class UsersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        //
+    
+        $user->load('transactions.book'); //used load() to prevent N+1
+        return view('users.show', [
+            'user' => $user //loads data into show view
+        ]);
     }
 
     /**

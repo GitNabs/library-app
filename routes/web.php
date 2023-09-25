@@ -3,6 +3,7 @@
 use App\Models\Book;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AuthorsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\TransactionsController;
@@ -52,3 +53,7 @@ Route::get('/transactions/{transaction}', [TransactionsController::class, 'show'
 Route::get('/transactions/{transaction}/edit', [TransactionsController::class, 'edit']);
 Route::put('/transactions/{transaction}', [TransactionsController::class, 'update']);
 Route::delete('/transactions/{transaction}', [TransactionsController::class, 'destroy']);
+
+// Users Routes
+Route::get('/users', [UsersController::class, 'index']);
+Route::get('/users/{user}', [UsersController::class, 'show']);
