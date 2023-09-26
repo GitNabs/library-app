@@ -86,7 +86,7 @@ class TransactionsController extends Controller
         return view('transactions.edit', [
             'transaction' => $transaction,
             'users' => User::all(),
-            'books' => Book::all()
+            'books' => Book::where('available', '=', 1)->get()
         ]);
     }
 
