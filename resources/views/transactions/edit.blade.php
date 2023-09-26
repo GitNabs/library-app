@@ -62,12 +62,24 @@
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
 
+        {{-- Due Date --}}
+        <label for="exampleFormControlInput1" class="form-label">Due Date</label>
+        <input class="form-control mb-2 @error('due_date') is-invalid @enderror" type="text" name="due_date" value="{{ $transaction->due_date }}">
+        @error('due_date')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+
         {{-- Return Date --}}
         <label for="exampleFormControlInput1" class="form-label">Date Returned</label>
         <input class="form-control mb-2 @error('returned_at') is-invalid @enderror" type="text" name="returned_at" value="{{ $transaction->returned_at }}">
         @error('returned_at')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
+        @if ($errors->any())
+             @foreach ($errors->all() as $error)
+                <div>{{$error}}</div>
+            @endforeach
+        @endif
 
         <button class="btn btn-success mt-3" type="submit">Save</button>
     </form>

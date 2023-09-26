@@ -61,7 +61,7 @@
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
-            @error('tags')
+            @error('categories')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
@@ -77,7 +77,7 @@
                     <option value="{{ $author->id }}">{{ $author->name }}</option>
                 @endforeach
             </select>
-            @error('author')
+            @error('author_id')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>

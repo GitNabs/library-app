@@ -23,6 +23,7 @@
                     </form>
                     <p class="body">Book Borrowed: <a href="books/{{ $transaction->book_id }}" style="color:black">{{ $transaction->book->title }}</a></p>
                     <p class="body">Date Borrowed: {{ $transaction->borrowed_at }}</p>
+                    <p class="body">Due Date: {{ $transaction->due_date }}</p>
                     {{-- @if($transaction->returned_at === null)
                     <p class="body">Date Returned: Not returned yet</p>
                     @else

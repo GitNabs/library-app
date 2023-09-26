@@ -14,49 +14,6 @@
     <form action="/transactions" method="post" class="text-center mt-5 w-50 mx-auto">
         @csrf
 
-        {{-- Borrower
-        <label for="exampleFormControlInput1" class="form-label">Borrower</label>
-        <input class="form-control mb-2 @error('title') is-invalid @enderror" type="text" name="title" value="{{ old('title') }}">
-        @error('title')
-            <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
-
-        {{-- Author
-        <label for="exampleFormControlInput1" class="form-label">Author</label>
-        <input class="form-control @error('body') is-invalid @enderror" type="text" name="author" value="{{ old('author') }}">
-        @error('author')
-            <div class="invalid-feedback">{{ $message }}</div>
-        @enderror --}}
-
-        {{-- Publication Year
-        <label for="exampleFormControlInput1" class="form-label">Year Published</label>
-        <input class="form-control @error('publication_year') is-invalid @enderror" type="text" name="publication_year" value="{{ old('publication_year') }}">
-        @error('publication_year')
-            <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
-
-        {{-- ISBN
-        <label for="exampleFormControlInput1" class="form-label">ISBN</label>
-        <input class="form-control @error('isbn') is-invalid @enderror" type="text" name="isbn" value="{{ old('isbn') }}">
-        @error('isbn')
-            <div class="invalid-feedback">{{ $message }}</div>
-        @enderror --}}
-
-        {{-- Categories
-        <label for="exampleFormControlInput1" class="form-label">Categories</label>
-        <div class="control">
-            <select
-                name="categories[]"
-                multiple
-            >
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
-            </select>
-            @error('tags')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div> --}}
 
         {{-- Borrower --}}
         <label for="exampleFormControlInput1" class="form-label">Borrower</label>
@@ -84,13 +41,22 @@
                 
             >
                 @foreach ($books as $book)
+                    
                     <option value="{{ $book->id }}">{{ $book->title }}</option>
+                    
                 @endforeach
             </select>
             @error('book')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
+
+        {{-- Due Date --}}
+        <label for="exampleFormControlInput1" class="form-label">Due Date</label>
+        <input class="form-control mb-2 @error('due_date') is-invalid @enderror" type="text" name="due_date" value="{{ old('due_date') }}">
+        @error('due_date')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
 
         <button class="btn btn-success mt-3" type="submit">Add to Records</button>
     </form>

@@ -13,7 +13,8 @@ class Transaction extends Model
         'user_id',
         'book_id',
         'borrowed_at',
-        'returned_at'
+        'returned_at',
+        'due_date'
     ];
 
     public $timestamps = false;
