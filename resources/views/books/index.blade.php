@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="post.css">
 </head>
 <body>
+    @if(!request('category'))
+    <h1>Filter by availabilty: <a href="books?available=1"style="color:black">Available</a>/<a href="books?available=0"style="color:black">Unavailable</a></h1>
+    <h1><a href="books/create"style="color:black">+ Add a book</a></h1>
+    @endif
     @if(request('category'))
         <h1><strong> {{ request('category') }} </strong></h1>
     @endif
@@ -47,7 +51,7 @@
             </article>
         @endforeach
 
-    @if(request('category'))
+    @if(request('category')||request('available')||!request('available'))
         <p><a href="/categories">Go to Categories</a></p>
         <p><a href="/books">Go to Books</a></p>
     @endif

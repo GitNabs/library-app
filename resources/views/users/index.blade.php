@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="post.css">
 </head>
 <body>
-    @if(request('category'))
-        <h1><strong> {{ request('category') }} </strong></h1>
-    @endif
+    <h1><a href="users/create"style="color:black">+ Add a user</a></h1>
         @foreach ($users as $user)
             <article style="margin-top: 16px;border-top:1px solid black;">
                 <h1 class="title">

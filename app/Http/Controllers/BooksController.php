@@ -168,7 +168,7 @@ class BooksController extends Controller
         
         $book->update(['available' => false]);
         
-        return redirect('/books');
+        return redirect()->back();
     }
 
     public function available(Book $book)
@@ -176,6 +176,6 @@ class BooksController extends Controller
     
         $book->update(['available' => true]);
         
-        return redirect('/books');
+        return redirect()->back();
     }
 }

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="post.css">
 </head>
 <body>
+    <h1><a href="authors/create"style="color:black">+ Add an author</a></h1>
     @foreach ($authors as $author)
         <article>
             <h1 class="title">

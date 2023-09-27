@@ -10,7 +10,7 @@
 <body>
     <article>
         <h1 class="title">
-            
+            <p class="body">Transaction No.: {{ $transaction->id }}</p>
             <p class="body">Borrower: {{ $transaction->user->name }}</p>
             <p class="body">E-mail: {{ $transaction->user->email }}</p>
             <p class="body">Date Borrowed: {{ $transaction->borrowed_at }}</p>

@@ -8,12 +8,11 @@
     <link rel="stylesheet" href="post.css">
 </head>
 <body>
-    @if(request('category'))
-        <h1><strong> {{ request('category') }} </strong></h1>
-    @endif
+    <h1><a href="transactions/create"style="color:black">+ Add a transaction record</a></h1>
         @foreach ($transactions as $transaction)
             <article style="margin-top: 16px;border-top:1px solid black;">
                 <h1 class="title">
+                    <p class="body">Transaction No.:<a href='/transactions/{{ $transaction->id }}'>{{$transaction->id}}</a></p>
                     <p class="body">Borrower: <a href="/users/{{ $transaction->user->id }}" style="color:black">{{ $transaction->user->name }} </a></p>
                     <a href="/transactions/{{ $transaction->id }}/edit">Edit</a>
                     <form action="/transactions/{{ $transaction->id }}" method="post">
