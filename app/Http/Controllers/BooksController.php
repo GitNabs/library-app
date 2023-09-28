@@ -160,7 +160,7 @@ class BooksController extends Controller
     {
         $book->delete();
 
-        return redirect()->back();
+        return redirect('/books');
     }
 
     public function unavailable(Book $book)

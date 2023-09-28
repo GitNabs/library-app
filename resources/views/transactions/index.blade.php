@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="post.css">
 </head>
 <body>
+    <h1><a href="transactions?returned_at=0"style="color:black">Filter unreturned books</a></h1>
     <h1><a href="transactions/create"style="color:black">+ Add a transaction record</a></h1>
         @foreach ($transactions as $transaction)
             <article style="margin-top: 16px;border-top:1px solid black;">

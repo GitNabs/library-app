@@ -24,6 +24,12 @@
             <a href="/books?category={{ $category->name }}" style="color:black">{{ $category->name }}</a>
         @endforeach
     </p>
+    <a href="/books/{{ $book->id }}/edit">Edit</a>
+                    <form action="/books/{{ $book->id }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
+                    </form>
     <a href="/books">Back</a>
 </body>
 </html>

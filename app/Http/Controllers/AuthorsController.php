@@ -98,6 +98,6 @@ class AuthorsController extends Controller
     {
         $author->delete();
 
-        return redirect()->back();
+        return redirect('/authors');
     }
 }

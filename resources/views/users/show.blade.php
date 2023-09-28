@@ -30,6 +30,12 @@
             </p>
         @endforeach
     </p>
+    <a href="/users/{{ $user->id }}/edit">Edit</a>
+                    <form action="/users/{{ $user->id }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
+                    </form>
     <a href="/users">Back to Users</a>
 </body>
 </html>

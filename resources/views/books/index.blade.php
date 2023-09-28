@@ -51,7 +51,7 @@
             </article>
         @endforeach
 
-    @if(request('category')||request('available')||!request('available'))
+    @if(request('category') || request()->boolean('available') || !request()->boolean('available'))
         <p><a href="/categories">Go to Categories</a></p>
         <p><a href="/books">Go to Books</a></p>
     @endif

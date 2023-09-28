@@ -9,6 +9,7 @@ use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Requests\Transaction\StoreRequest;
 use App\Http\Requests\Transaction\UpdateRequest;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 
 class TransactionsController extends Controller
 {
@@ -17,23 +18,21 @@ class TransactionsController extends Controller
      */
     public function index(Request $req)
     {
-        $transactions = [];
-        // $search = $req->input('search');
+        // availability
+        // nationality
 
-        // if (!empty($search)) {
-        //     // select * from `authors` where `authors`.`id` in (1, 3, 4, 5, 6, 7, 8, 9, 10)
-        //     $books = Book::with('author')->where('title', 'LIKE', "%$search%")->get();
-        // }
+        // 
+        $transactions = Transaction::query()
+            ->with(['book', 'user']) // (['categories'])
+            // gets only the books with categories relation who's not empty
+            
+            ->when(
+                !$req->boolean('returned_at'), // true or false
+                fn (Builder $q) => $q->where('returned_at', '=', null) // filter
+                // function ($q) { return $q->where('title', 'LIKE', "%$search%"); }
+            )
+            ->get();
 
-        // if (request('category')){
-        //     // select * from `books` where `books`.`id` in (1, 3, 4, 5, 6, 7, 8, 9, 10)
-        //     $books = Category::with('books')->where('name', request('category'))->firstorFail()->books;
-        // } else {
-        //     // select * from `authors` where `authors`.`id` in (1, 3, 4, 5, 6, 7, 8, 9, 10)
-        //     $transactions=Transaction::all();
-        //     // $transactions = Book::with('author')->get();
-        // }
-        $transactions = Transaction::with(['book', 'user'])->get();
         return view('transactions.index', [
             'transactions' => $transactions,
         ]);
@@ -115,6 +114,6 @@ class TransactionsController extends Controller
     {
         $transaction->delete();
 
-        return redirect()->back();
+        return redirect('/transactions');
     }
 }

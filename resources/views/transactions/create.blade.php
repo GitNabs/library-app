@@ -59,5 +59,5 @@
         @enderror
 
         <button class="btn btn-success mt-3" type="submit">Add to Records</button>
-    </form>
+    </form> 
 @endsection

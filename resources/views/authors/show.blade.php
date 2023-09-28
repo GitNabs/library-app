@@ -24,6 +24,12 @@
             <h1><a href="/books/{{ $book->id }}" style="color:black">{{ $book->title }}</a></h1>
         @endforeach
     </p>
+    <a href="/authors/{{ $author->id }}/edit">Edit</a>
+                    <form action="/authors/{{ $author->id }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
+                    </form>
     <a href="/authors">Back to Authors</a>
 </body>
 </html>

@@ -21,6 +21,12 @@
         </h1>
         
     </article>
+    <a href="/transactions/{{ $transaction->id }}/edit">Edit</a>
+                    <form action="/transactions/{{ $transaction->id }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
+                    </form>
     {{-- <p style="margin-top: 1em">
         @foreach ($transaction->books as $book )
             <h1><a href="/books/{{ $book->id }}" style="color:black">{{ $book->title }}</a></h1>
