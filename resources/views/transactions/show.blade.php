@@ -1,37 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="/post.css">
-</head>
-<body>
-    <article>
-        <h1 class="title">
-            <p class="body">Transaction No.: {{ $transaction->id }}</p>
-            <p class="body">Borrower: {{ $transaction->user->name }}</p>
-            <p class="body">E-mail: {{ $transaction->user->email }}</p>
-            <p class="body">Date Borrowed: {{ $transaction->borrowed_at }}</p>
-            <p class="body">{{ $transaction->returned_at === null ?
-                "Date Returned: Not returned yet" : "Date Returned:  $transaction->returned_at" }}
-            </p>
-            <p class="body">Book Borrowed: {{ $transaction->book->title }}</p>
-        </h1>
-        
-    </article>
-    <a href="/transactions/{{ $transaction->id }}/edit">Edit</a>
-                    <form action="/transactions/{{ $transaction->id }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Delete</button>
-                    </form>
-    {{-- <p style="margin-top: 1em">
-        @foreach ($transaction->books as $book )
-            <h1><a href="/books/{{ $book->id }}" style="color:black">{{ $book->title }}</a></h1>
-        @endforeach
-    </p> --}}
+@extends('layout')
+@section('title', 'Transaction')
+@section('content')
+<div class="row">
+        <div class="col-6">
+            <div class="mb-3">
+                <label class="form-label" id="basic-addon1">Transaction No.</label>
+                <div class="input-group mb-3">
+                    <input disabled type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" value="{{ $transaction->id }}"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="mb-3">
+                <label class="form-label" id="basic-addon1">Borrower</label>
+                <div class="input-group mb-3">
+                    <input disabled type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" value="{{ $transaction->user->name }}"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="mb-3">
+                <label class="form-label" id="basic-addon1">Borrower E-Mail</label>
+                <div class="input-group mb-3">
+                    <input disabled type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" value="{{ $transaction->user->email }}"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="mb-3">
+                <label class="form-label" id="basic-addon1">Book Borrowed</label>
+                <div class="input-group mb-3">
+                    <input disabled type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" value="{{ $transaction->book->title }}"/>
+                </div>
+            </div>
+        </div>
+         <div class="col-6">
+            <div class="mb-3">
+                <label class="form-label" id="basic-addon1">Date Borrowed</label>
+                <div class="input-group mb-3">
+                    <input disabled type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" value="{{ $transaction->borrowed_at }}"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="mb-3">
+                <label class="form-label" id="basic-addon1">Date Returned</label>
+                <div class="input-group mb-3">
+                    <input disabled type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" value="{{ $transaction->returned_at === null ?
+                "Not returned yet" : "$transaction->returned_at" }}"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="mb-3">
+                <label class="form-label" id="basic-addon1">Due Date</label>
+                <div class="input-group mb-3">
+                    <input disabled type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" value="{{ $transaction->due_date }}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-warning"><a class="text-light" href="/transactions/{{ $transaction->id }}/edit">Edit</a></button>
+                     <form action="/transactions/{{ $transaction->id }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                        <br>
     <a href="/transactions">Back to Transactions</a>
-</body>
-</html>
+@endsection

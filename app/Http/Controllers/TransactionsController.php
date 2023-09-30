@@ -9,7 +9,7 @@ use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Requests\Transaction\StoreRequest;
 use App\Http\Requests\Transaction\UpdateRequest;
-use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Builder;
 
 class TransactionsController extends Controller
 {
@@ -31,7 +31,7 @@ class TransactionsController extends Controller
                 fn (Builder $q) => $q->where('returned_at', '=', null) // filter
                 // function ($q) { return $q->where('title', 'LIKE', "%$search%"); }
             )
-            ->get();
+            ->paginate(5);
 
         return view('transactions.index', [
             'transactions' => $transactions,

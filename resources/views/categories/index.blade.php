@@ -1,21 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Books</title>
-    <link rel="stylesheet" href="post.css">
-</head>
-<body>
+@extends('layout')
+@section('title', 'category')
+@section('content')
     <strong> CATEGORIES </strong>
-    @foreach ($categories as $category)
-        <article>
-            <h1 class="title">
-                <a href="/books?category={{ $category->name }}">{{ $category->name }}</a>
-                </form>
-            </h1>
-        </article>
-    @endforeach
-</body>
-</html>
+    <div class="row">
+        @foreach ($categories as $category)
+        {{-- 12 segments --}}
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $category->name}}</h5>
+                        {{-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --}}
+                        <a href="/books?category={{ $category->name}}" class="btn btn-primary">Go to {{ $category->name }} books</a>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+@endsection

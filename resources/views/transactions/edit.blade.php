@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', "Modify Transaction")
+@section('title', "Update transaction")
 @section('content')
     {{-- 1. Form
     2. set the action and method
@@ -10,8 +10,9 @@
             <div>{{ $error }}</div>
         @endforeach
     @endif --}}
-
-    <form action="/transactions/{{ $transaction->id }}" method="post" class="text-center mt-5 w-50 mx-auto">
+<div class="card">
+                    <div class="card-body">
+                         <form action="/transactions/{{ $transaction->id }}" method="post" class="text-center mt-5 w-50 mx-auto">
         @csrf
         @method('PUT')
 
@@ -83,4 +84,7 @@
 
         <button class="btn btn-success mt-3" type="submit">Save</button>
     </form>
+                    </div>
+</div>
+   
 @endsection

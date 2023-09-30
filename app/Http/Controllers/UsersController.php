@@ -14,8 +14,8 @@ class UsersController extends Controller
      */
     public function index() 
     {
-        $users = [];
-        $users = User::with(['transactions'])->get(); //used with to prevent N+1
+        $users = User::with(['transactions'])->paginate(5); //used with to prevent N+1
+
         return view('users.index', [
             'users' => $users //loads the data into index view
         ]);

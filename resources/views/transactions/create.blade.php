@@ -10,8 +10,9 @@
             <div>{{ $error }}</div>
         @endforeach
     @endif --}}
-
-    <form action="/transactions" method="post" class="text-center mt-5 w-50 mx-auto">
+<div class="card">
+                    <div class="card-body">
+                        <form action="/transactions" method="post" class="text-center mt-5 w-50 mx-auto">
         @csrf
 
 
@@ -60,4 +61,7 @@
 
         <button class="btn btn-success mt-3" type="submit">Add to Records</button>
     </form> 
+                    </div>
+</div>
+    
 @endsection

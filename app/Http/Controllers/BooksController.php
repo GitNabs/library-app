@@ -77,7 +77,7 @@ class BooksController extends Controller
                 fn (Builder $q) => $q->where('available', '=', $req->input('available')) // filter
                 // function ($q) { return $q->where('title', 'LIKE', "%$search%"); }
             )
-            ->get();
+            ->paginate(5);
 
         return view('books.index', [
             'books' => $books,

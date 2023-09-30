@@ -19,9 +19,9 @@ use App\Http\Controllers\TransactionsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', fn () => view('welcome'));
+Route::get('/dashboard', fn () => view('dashboard'));
+
 // Books Routes
 Route::get('/books', [BooksController::class, 'index']);
 Route::put('/books/{book}/unavailable', [BooksController::class, 'unavailable']);
