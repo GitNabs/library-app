@@ -20,14 +20,12 @@ class TransactionsController extends Controller
     {
         // availability
         // nationality
-
-        // 
         $transactions = Transaction::query()
             ->with(['book', 'user']) // (['categories'])
             // gets only the books with categories relation who's not empty
             
             ->when(
-                !$req->boolean('returned_at'), // true or false
+                $req->filled('returned_at') && !$req->boolean('returned_at'), // true or false
                 fn (Builder $q) => $q->where('returned_at', '=', null) // filter
                 // function ($q) { return $q->where('title', 'LIKE', "%$search%"); }
             )

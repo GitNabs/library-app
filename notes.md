@@ -55,3 +55,17 @@ MAIL_ENCRYPTION=ssl
 - generate the table for the notifications
     - php artisan notifications:table
 - in order for a user to receive a notification import the class `Illuminate\Notifications\Notifiable`
+
+https://spatie.be/docs/laravel-permission/v5/basic-usage/middleware
+https://spatie.be/docs/laravel-permission/v5/basic-usage/basic-usage
+- create a role
+    ```php
+    Role::create(['name' => 'Role Name'])
+    ```
+- attach a role to a user
+    - get the user
+    - assignthe role with assignRole method
+    ```php
+    $admin = User::first();
+    $admin->assignRole('Administrator');
+    ```

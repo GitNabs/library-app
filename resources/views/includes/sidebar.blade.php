@@ -3,10 +3,12 @@
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar  collapse bg-white" >
             <div class="position-fixed">
                 <div class="list-group list-group-flush mx-3 mt-4">
-                    <a href="/dashboard" class="list-group-item list-group-item-action py-2 ripple" aria-current="true" >
-                        <i class="fas fa-tachometer-alt fa-fw me-3"></i>
-                        <span>Dashboard</span>
-                    </a>
+                    @role('Administrator')
+                        <a href="/dashboard" class="list-group-item list-group-item-action py-2 ripple" aria-current="true" >
+                            <i class="fas fa-tachometer-alt fa-fw me-3"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    @endrole
                     <a href="/users" class="list-group-item list-group-item-action py-2 ripple" aria-current="true" >
                         <i class="fas fa-user fa-fw me-3"></i>
                         <span>User</span>
@@ -53,6 +55,9 @@
                     <span class="input-group-text border-0">
                         <i class="fas fa-search"></i>
                     </span>
+                    @auth
+                        <h5>Hello, {{ auth()->user()->name }}</h5>
+                    @endauth
                 </form>
 
                 <!-- Right links -->
@@ -153,7 +158,12 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink" >
                         <li><a class="dropdown-item" href="#">My profile</a></li>
                         <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                        <li>
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <button type="submit" class="dropdown-item" href="#">Logout</button>
+                            </form>
+                        </li>
                     </ul>
                     </li>
                 </ul>

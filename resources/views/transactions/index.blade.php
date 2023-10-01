@@ -21,7 +21,8 @@
                     <td>{{ $transaction->user->name }}</td>
                     <td>{{ $transaction->book->title }}</td>
                     <td>{{ $transaction->borrowed_at }}</td>
-                    <td>{{ $transaction->returned_at }}</td>
+                    <td>{{ $transaction->returned_at === null ?
+                    "Not returned yet" : "$transaction->returned_at" }}</td>
                     <td>{{ $transaction->due_date }}</td>
                     <td> 
                         <button class="btn btn-success"><a class="text-light" href="/transactions/{{ $transaction->id }}">View</a></button>
