@@ -45,18 +45,20 @@
                     <td> 
                         <button class="btn btn-success"><a class="text-light" href="/books/{{ $book->id }}">View</a></button>
                         <button class="btn btn-warning"><a class="text-light" href="/books/{{ $book->id }}/edit">Edit</a></button>
+                        @role('Administrator')
                         <form action="/books/{{ $book->id }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">Delete</button>
                         </form>
+                        @endrole
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 {{ $books->links() }}
-    @if(request('category') || request()->boolean('available') || !request()->boolean('available'))
+    @if(request('category') && filled(request('category')) || filled(request('available')) && request()->boolean('available') || filled(request('available')) && !request()->boolean('available'))
         <p><a href="/categories">Go to Categories</a></p>
         <p><a href="/books">Go to Books</a></p>
     @endif

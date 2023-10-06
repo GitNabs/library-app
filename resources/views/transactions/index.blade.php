@@ -27,11 +27,13 @@
                     <td> 
                         <button class="btn btn-success"><a class="text-light" href="/transactions/{{ $transaction->id }}">View</a></button>
                         <button class="btn btn-warning"><a class="text-light" href="/transactions/{{ $transaction->id }}/edit">Edit</a></button>
+                        @role('Administrator')
                         <form action="/transactions/{{ $transaction->id }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">Delete</button>
                         </form>
+                        @endrole
                     </td>
                 </tr>
             @endforeach

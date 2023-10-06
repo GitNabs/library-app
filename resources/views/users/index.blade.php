@@ -19,11 +19,13 @@
                     <td> 
                         <button class="btn btn-success"><a class="text-light" href="/users/{{ $user->id }}">View</a></button>
                         <button class="btn btn-warning"><a class="text-light" href="/users/{{ $user->id }}/edit">Edit</a></button>
+                        @role('Administrator')
                         <form action="/users/{{ $user->id }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">Delete</button>
                         </form>
+                        @endrole
                     </td>
                 </tr>
             @endforeach
