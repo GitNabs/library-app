@@ -29,6 +29,11 @@ class TransactionsController extends Controller
                 fn (Builder $q) => $q->where('returned_at', '=', null) // filter
                 // function ($q) { return $q->where('title', 'LIKE', "%$search%"); }
             )
+            ->when(
+                $req->filled('returned_at') && $req->boolean('returned_at'), // true or false
+                fn (Builder $q) => $q->whereNotNull('returned_at') // filter
+                // function ($q) { return $q->where('title', 'LIKE', "%$search%"); }
+            )
             ->paginate(5);
 
         return view('transactions.index', [

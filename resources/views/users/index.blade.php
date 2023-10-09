@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title', 'Users')
 @section('content')
-    <h1><a href="users/create"style="color:black">+ Add a user</a></h1>
+    <h1><button type="button" class="btn btn-info btn-lg"><a href="users/create"style="color:black">+ Add a user</a></button></h1>
     <table class="table table-hover">
         <thead>
             <tr>

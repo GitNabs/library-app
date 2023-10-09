@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'category')
+@section('title', 'Categories')
 @section('content')
     <strong> CATEGORIES </strong>
     <div class="row">

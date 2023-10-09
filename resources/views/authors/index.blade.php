@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title', 'Authors')
 @section('content')
-    <h1><a href="authors/create"style="color:black">+ Add an author</a></h1>
+    <h1><button type="button" class="btn btn-info btn-lg"><a href="authors/create"style="color:black">+ Add an author</a></button></h1>
     <table class="table table-hover">
         <thead>
             <tr>

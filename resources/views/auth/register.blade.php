@@ -25,11 +25,41 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-xl-5 col-md-8">
-              <form class="bg-white rounded shadow-5-strong p-5" action="/login/auth" method="POST">
+              <form class="bg-white rounded shadow-5-strong p-5" action="/register/auth" method="POST">
                 @csrf
-                @if (Session::has('errorResponse'))
-                  <p class="text-center text-danger">{{ Session::get('errorResponse') }}</p>
-                @endif
+
+                {{-- Role --}}
+                <label for="exampleFormControlInput1" class="form-label">Role</label>
+                <div class="control mb-4">
+                <select
+                name="role_id"
+                
+            >
+                @foreach ($roles as $role)
+                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                @endforeach
+                </select>
+                @error('author_id')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+                </div>
+
+                <!-- Name input -->
+                <div class="form-outline mb-4">
+                    <input
+                      type="name"
+                      name="name"
+                      id="form1Example1"
+                      class="form-control @error('name') is-invalid @enderror"
+                      value="{{ old('name') }}" 
+                    />
+                    <label class="form-label" for="form1Example1">Name</label>
+  
+                    @error('name')
+                      <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                  </div>
+                
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                   <input
@@ -61,31 +91,23 @@
                   @enderror
                 </div>
 
-                <!-- 2 column grid layout for inline styling -->
-                <div class="row mb-4">
-                  <div class="col d-flex justify-content-center">
-                    <!-- Checkbox -->
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
-                      <label class="form-check-label" for="form1Example3">
-                        Remember me
-                      </label>
-                    </div>
+                <!-- Confirm Password input -->
+                <div class="form-outline mb-4">
+                    <input
+                      name="password_confirmation"
+                      type="password"
+                      id="form1Example2"
+                      class="form-control @error('password_confirmation') is-invalid @enderror" 
+                    />
+                    <label class="form-label" for="form1Example2">Confirm Password</label>
+  
+                    @error('password_confirmation')
+                      <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                   </div>
-
-                  <div class="col text-center">
-                    <!-- Simple link -->
-                    <a href="#!">Forgot password?</a>
-                  </div>
-
-                  <div class="col text-center">
-                    <!-- Simple link -->
-                    <a href="/register">Register</a>
-                  </div>
-                </div>
 
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
               </form>
             </div>
           </div>

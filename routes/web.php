@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
 use App\Models\Book;
 use App\Models\User;
 use App\Models\Transaction;
@@ -10,8 +9,10 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AuthorsController;
 use App\Http\Controllers\ChartJsController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\TransactionsController;
+use App\Http\Controllers\Auth\RegisterController;
 // dd(request()->url(), request()->method());
 
 /*
@@ -30,6 +31,9 @@ Route::get('/', fn () => view('welcome'));
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login/auth', [LoginController::class, 'login']);
 
+Route::get('/register', [RegisterController::class, 'showRegisterForm']);
+Route::post('/register/auth', [RegisterController::class, 'register']);
+
 // middleware `auth`: checks if the user is authenticated, if not redirect to login route with a name of `login`
 Route::middleware('auth')->group(function ()
 {
@@ -46,8 +50,8 @@ Route::middleware('auth')->group(function ()
     Route::post('/books', [BooksController::class, 'store']);
     Route::get('/books/{book}', [BooksController::class, 'show']);
     Route::get('/books/{book}/edit', [BooksController::class, 'edit']);
-    Route::put('/books/{book}', [BooksController::class, 'update'])->middleware('role:Administrator');
-    Route::delete('/books/{book}', [BooksController::class, 'destroy']);
+    Route::put('/books/{book}', [BooksController::class, 'update']);
+    Route::delete('/books/{book}', [BooksController::class, 'destroy'])->middleware('role:Administrator');
 
     // Authors Routes
     Route::get('/authors', [AuthorsController::class, 'index']);
@@ -56,7 +60,7 @@ Route::middleware('auth')->group(function ()
     Route::get('/authors/{author}', [AuthorsController::class, 'show']);
     Route::get('/authors/{author}/edit', [AuthorsController::class, 'edit']);
     Route::put('/authors/{author}', [AuthorsController::class, 'update']);
-    Route::delete('/authors/{author}', [AuthorsController::class, 'destroy']);
+    Route::delete('/authors/{author}', [AuthorsController::class, 'destroy'])->middleware('role:Administrator');
 
     // Categories Routes
     Route::get('/categories', [CategoriesController::class, 'index']);
@@ -68,7 +72,7 @@ Route::middleware('auth')->group(function ()
     Route::get('/transactions/{transaction}', [TransactionsController::class, 'show']);
     Route::get('/transactions/{transaction}/edit', [TransactionsController::class, 'edit']);
     Route::put('/transactions/{transaction}', [TransactionsController::class, 'update']);
-    Route::delete('/transactions/{transaction}', [TransactionsController::class, 'destroy']);
+    Route::delete('/transactions/{transaction}', [TransactionsController::class, 'destroy'])->middleware('role:Administrator');
 
     // Users Routes
     Route::get('/users', [UsersController::class, 'index']);
@@ -77,5 +81,5 @@ Route::middleware('auth')->group(function ()
     Route::get('/users/{user}', [UsersController::class, 'show']);
     Route::get('/users/{user}/edit', [UsersController::class, 'edit']);
     Route::put('/users/{user}', [UsersController::class, 'update']);
-    Route::delete('/users/{user}', [UsersController::class, 'destroy']);
+    Route::delete('/users/{user}', [UsersController::class, 'destroy'])->middleware('role:Administrator');
 });

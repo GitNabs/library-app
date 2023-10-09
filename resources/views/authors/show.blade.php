@@ -64,11 +64,13 @@
     
     
     <button class="btn btn-warning"><a class="text-light" href="/authors/{{ $author->id }}/edit">Edit</a></button>
+                    @role('Administrator')
                      <form action="/authors/{{ $author->id }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">Delete</button>
                         </form>
+                    @endrole
                         <br>
     <a href="/authors">Back to Authors</a>
 @endsection

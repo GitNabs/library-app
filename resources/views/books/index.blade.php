@@ -2,8 +2,8 @@
 @section('title', 'Books')
 @section('content')
     @if(!request('category'))
-        <h1>Filter by availabilty: <a href="books?available=1"style="color:black">Available</a>/<a href="books?available=0"style="color:black">Unavailable</a></h1>
-        <h1><a href="books/create"style="color:black">+ Add a book</a></h1>
+        <h1>Filter by availability: <button type="button" class="btn btn-secondary btn-lg"><a href="books?available=1"style="color:black">Available</a></button> <button type="button" class="btn btn-secondary btn-lg"><a href="books?available=0"style="color:black">Unavailable</a></button></h1>
+        <h1><button type="button" class="btn btn-info btn-lg"><a href="books/create"style="color:black">+ Add a book</a></button></h1>
     @endif
     @if(request('category'))
         <h1><strong> {{ request('category') }} </strong></h1>
@@ -58,8 +58,11 @@
         </tbody>
     </table>
 {{ $books->links() }}
-    @if(request('category') && filled(request('category')) || filled(request('available')) && request()->boolean('available') || filled(request('available')) && !request()->boolean('available'))
+    @if(filled(request('category')))
         <p><a href="/categories">Go to Categories</a></p>
         <p><a href="/books">Go to Books</a></p>
+    @endif
+    @if(filled(request('available')) && request()->boolean('available') || filled(request('available')) && !request()->boolean('available'))
+    <p><a href="/books">Remove filter</a></p>
     @endif
 @endsection

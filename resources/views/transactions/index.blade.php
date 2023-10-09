@@ -1,8 +1,9 @@
 @extends('layout')
 @section('title', 'Transactions')
 @section('content')
-    <h1><a href="transactions?returned_at=0"style="color:black">Filter unreturned books</a></h1>
-    <h1><a href="transactions/create"style="color:black">+ Add a transaction record</a></h1>
+    <h1><button type="button" class="btn btn-secondary btn-lg"><a href="transactions?returned_at=1"style="color:black">Filter returned books</a></button></h1>
+    <h1><button type="button" class="btn btn-secondary btn-lg"><a href="transactions?returned_at=0"style="color:black">Filter unreturned books</a></button></h1>
+    <h1><button type="button" class="btn btn-info btn-lg"><a href="transactions/create"style="color:black">+ Add a transaction record</a></button></h1>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -39,5 +40,8 @@
             @endforeach
         </tbody>
     </table>
+    @if(filled(request('returned_at')) && request()->boolean('returned_at') || filled(request('returned_at')) && !request()->boolean('returned_at'))
+    <p><a href="/transactions">Remove filter</a></p>
+    @endif
     {{ $transactions->links() }}
 @endsection
